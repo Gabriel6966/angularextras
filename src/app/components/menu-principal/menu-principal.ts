@@ -1,25 +1,37 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { PostFileService } from '../../service/service.postfile';
-import { HttpClient } from '@angular/common/http';
-
+import { File } from '../../models/file';
 @Component({
   selector: 'app-menu-principal',
   standalone: false,
   styleUrl: './menu-principal.css',
   templateUrl: './menu-principal.html',
 })
-export class MenuPrincipal implements OnInit{
+export class MenuPrincipal {
+  @ViewChild('cajaimagen') cajaimagen!: ElementRef;
 
-  @ViewChild("cajaimagen") cajaimagen!: ElementRef;
+  constructor(private _service: PostFileService) {}
 
-  constructor(private postFileService: PostFileService, private http: HttpClient) {}
+  subirImagen() {
+    let imagen = this.cajaimagen.nativeElement.files[0];
 
+    if (!imagen) return;
 
-  subirFile(event: any){
-    let url
+    let reader = new FileReader();
+    reader.onload = ()=>{
+      let file = new File(
+        imagen.name,
+        (reader.result as string).split(',')[1],
+      );
+
+      this._service.postfile(file).subscribe({
+        next: (response)=>{
+          console.log('Imagen subida correctamente', response);
+        },error: (error)=>{
+          console.error('Error al subir la imagen', error);
+        }
+      })
+    }
+    reader.readAsDataURL(imagen);
   }
-
-  ngOnInit(): void {
-  }
-
 }
