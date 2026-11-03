@@ -11,9 +11,12 @@ import { provideToastService } from 'ngx-yet-another-toast-library';
 import { ErrorComponent } from './components/error-component/error-component';
 import { EquipoComponent } from './components/equipo-component/equipo-component';
 import { ServiceEquipos } from './service/service.equipos';
+import { LoginComponent } from './components/login-component/login-component';
+import { SubordinadosComponent } from './components/subordinados-component/subordinados-component';
+
 
 @NgModule({
-  declarations: [App, MenuPrincipal, InformesPdfComponent, ErrorComponent, EquipoComponent],
+  declarations: [App, MenuPrincipal, InformesPdfComponent, ErrorComponent, EquipoComponent, LoginComponent, SubordinadosComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [
     provideBrowserGlobalErrorListeners(),

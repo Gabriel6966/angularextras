@@ -1,0 +1,33 @@
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { EmpleadosService } from '../../service/service.empleados';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-subordinados-component',
+  standalone: false,
+  styleUrl: './subordinados-component.css',
+  templateUrl: './subordinados-component.html',
+})
+export class SubordinadosComponent implements OnInit {
+
+
+  subordinados: any[] = [];
+
+  constructor(
+    private _cdr:ChangeDetectorRef, private _service:EmpleadosService, private _route:Router
+  ) { }
+
+  ngOnInit(): void {
+    this._service.getSubordinados().subscribe({
+      next: (data) => {
+        console.log(data);
+        this.subordinados = data;
+        this._cdr.detectChanges();
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+  }
+}
+
