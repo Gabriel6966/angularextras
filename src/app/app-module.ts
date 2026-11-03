@@ -9,9 +9,10 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { errorInterceptor } from './interceptors/error-interceptor';
 import { provideToastService } from 'ngx-yet-another-toast-library';
 import { ErrorComponent } from './components/error-component/error-component';
+import { EquipoComponent } from './components/equipo-component/equipo-component';
 
 @NgModule({
-  declarations: [App, MenuPrincipal, InformesPdfComponent, ErrorComponent ],
+  declarations: [App, MenuPrincipal, InformesPdfComponent, ErrorComponent, EquipoComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [
     provideBrowserGlobalErrorListeners(),
