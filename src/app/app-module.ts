@@ -5,11 +5,14 @@ import { App } from './app';
 import { MenuPrincipal } from './components/menu-principal/menu-principal';
 import { PostFileService } from './service/service.postfile';
 import { InformesPdfComponent } from './components/informes-pdf-component/informes-pdf-component';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { errorInterceptor } from './interceptors/error-interceptor';
+import { provideToastService } from 'ngx-yet-another-toast-library';
 
 @NgModule({
   declarations: [App, MenuPrincipal, InformesPdfComponent],
   imports: [BrowserModule, AppRoutingModule],
-  providers: [provideBrowserGlobalErrorListeners(), PostFileService],
+  providers: [provideBrowserGlobalErrorListeners(), PostFileService, provideHttpClient( withInterceptors([errorInterceptor])), provideToastService()],
   bootstrap: [App],
 })
 export class AppModule {}
