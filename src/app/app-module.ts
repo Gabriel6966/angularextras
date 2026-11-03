@@ -8,11 +8,17 @@ import { InformesPdfComponent } from './components/informes-pdf-component/inform
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { errorInterceptor } from './interceptors/error-interceptor';
 import { provideToastService } from 'ngx-yet-another-toast-library';
+import { ErrorComponent } from './components/error-component/error-component';
 
 @NgModule({
-  declarations: [App, MenuPrincipal, InformesPdfComponent],
+  declarations: [App, MenuPrincipal, InformesPdfComponent, ErrorComponent ],
   imports: [BrowserModule, AppRoutingModule],
-  providers: [provideBrowserGlobalErrorListeners(), PostFileService, provideHttpClient( withInterceptors([errorInterceptor])), provideToastService()],
+  providers: [
+    provideBrowserGlobalErrorListeners(),
+    PostFileService,
+    provideHttpClient(withInterceptors([errorInterceptor])),
+    provideToastService(),
+  ],
   bootstrap: [App],
 })
 export class AppModule {}
