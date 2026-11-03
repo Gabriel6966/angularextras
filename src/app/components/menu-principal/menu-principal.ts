@@ -18,7 +18,7 @@ export class MenuPrincipal {
     if (!imagen) return;
 
     let reader = new FileReader();
-    reader.onload = ()=>{
+    reader.onloadend = ()=>{
       let file = new File(
         imagen.name,
         (reader.result as string).split(',')[1],
