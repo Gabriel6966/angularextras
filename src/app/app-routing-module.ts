@@ -4,6 +4,8 @@ import { MenuPrincipal } from './components/menu-principal/menu-principal';
 import { InformesPdfComponent } from './components/informes-pdf-component/informes-pdf-component';
 import { ErrorComponent } from './components/error-component/error-component';
 import { EquipoComponent } from './components/equipo-component/equipo-component';
+import { LoginComponent } from './components/login-component/login-component';
+import { SubordinadosComponent } from './components/subordinados-component/subordinados-component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'menuprincipal', pathMatch: 'full' },
@@ -11,6 +13,8 @@ const routes: Routes = [
   { path: 'informes', component: InformesPdfComponent },
   { path: 'error', component: ErrorComponent },
   {path : "equipo", component: EquipoComponent},
+  {path: "login", component: LoginComponent},
+  {path: "subordinados", component:SubordinadosComponent},
   { path: '**', redirectTo: 'menuprincipal' },
 ];
 

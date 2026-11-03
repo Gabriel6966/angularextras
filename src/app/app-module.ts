@@ -13,6 +13,8 @@ import { EquipoComponent } from './components/equipo-component/equipo-component'
 import { ServiceEquipos } from './service/service.equipos';
 import { LoginComponent } from './components/login-component/login-component';
 import { SubordinadosComponent } from './components/subordinados-component/subordinados-component';
+import { EmpleadosService } from './service/service.empleados';
+import { authTokenInterceptor } from './interceptors/auth-token-interceptor';
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import { SubordinadosComponent } from './components/subordinados-component/subor
     provideBrowserGlobalErrorListeners(),
     PostFileService,
     ServiceEquipos,
-    provideHttpClient(withInterceptors([errorInterceptor])),
+    EmpleadosService,
+    provideHttpClient(withInterceptors([authTokenInterceptor, errorInterceptor])),
     provideToastService(),
   ],
   bootstrap: [App],

@@ -7,5 +7,10 @@ import { Component, signal } from '@angular/core';
   templateUrl: './app.html',
 })
 export class App {
+
+  logOutEmpleado(): void{
+    localStorage.removeItem('TOKEN');
+  }
+
   protected readonly title = signal('angularextras');
 }

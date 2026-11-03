@@ -26,9 +26,8 @@ export class EmpleadosService{
     //}
 
     getSubordinados(): Observable<Empleado[]>{
-        let response = localStorage.getItem("TOKEN");
-        let headers = new HttpHeaders().set("Authorization", "Bearer " + response);
-        return this._http.get<Empleado[]>(this.url + "api/Empleados/Subordinados", {headers: headers});
+
+        return this._http.get<Empleado[]>(this.url + "api/Empleados/Subordinados");
     }
 
     getPerfilEmpleado(): Observable<Empleado>{

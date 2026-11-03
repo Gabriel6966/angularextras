@@ -9,43 +9,32 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './login-component.html',
 })
 export class LoginComponent implements OnInit {
+  @ViewChild('cajauser') cajauser!: ElementRef;
+  @ViewChild('cajacontrasena') cajacontrasena!: ElementRef;
 
-
-  @ViewChild("cajauser") cajauser!: ElementRef;
-  @ViewChild("cajacontrasena") cajacontrasena!: ElementRef;
-
-
-
-
-  constructor(private _cdr: ChangeDetectorRef,
+  constructor(
+    private _cdr: ChangeDetectorRef,
     private _service: EmpleadosService,
-    private _router: Router) { }
-
+    private _router: Router,
+  ) {}
 
   login() {
-    this._service.loginEmpleado({
-      userName: this.cajauser.nativeElement.value,
-      password: this.cajacontrasena.nativeElement.value
-    }).subscribe({
-      next: (data) => {
-        console.log(data);
-        this._authService.loginEmpleadoSignal(data.response).subscribe({
-          next: (empleado) => {
-            this._authService.user.set(empleado);
-            this._router.navigate(['/perfil']);
-          },
-          error: (error) => console.log(error),
-        });
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
+    this._service
+      .loginEmpleado({
+        userName: this.cajauser.nativeElement.value,
+        password: this.cajacontrasena.nativeElement.value,
+      })
+      .subscribe({
+        next: (data) => {
+          console.log(data);
+          localStorage.setItem('TOKEN', data.response);
+          this._router.navigate(['/subordinados'])
+        },
+        error: (error) => {
+          console.log(error);
+        },
+      });
   }
 
-  ngOnInit(): void {
-
-
-  }
-
+  ngOnInit(): void {}
 }
