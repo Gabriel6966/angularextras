@@ -1,1 +1,23 @@
-<p>equipo-component works!</p>
+<h1>Equipos</h1>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Imagen</th>
+      <th>Champions</th>
+      <th>Web</th>
+      <th>Finalista</th>
+    </tr>
+  </thead>
+  <tbody style="border: 1px solid black;">
+    <tr *ngFor="let equipo of equipos">
+      <td>{{ equipo.idEquipo }}</td>
+      <td>{{ equipo.nombre }}</td>
+      <img src="{{ equipo.imagen }}" alt="{{ equipo.nombre }}" width="100" height="100" />
+      <td>{{ equipo.champions }}</td>
+      <td>{{ equipo.web }}</td>
+      <td>{{ equipo.finalista }}</td>
+    </tr>
+  </tbody>
+</table>

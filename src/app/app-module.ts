@@ -10,6 +10,7 @@ import { errorInterceptor } from './interceptors/error-interceptor';
 import { provideToastService } from 'ngx-yet-another-toast-library';
 import { ErrorComponent } from './components/error-component/error-component';
 import { EquipoComponent } from './components/equipo-component/equipo-component';
+import { ServiceEquipos } from './service/service.equipos';
 
 @NgModule({
   declarations: [App, MenuPrincipal, InformesPdfComponent, ErrorComponent, EquipoComponent],
@@ -17,6 +18,7 @@ import { EquipoComponent } from './components/equipo-component/equipo-component'
   providers: [
     provideBrowserGlobalErrorListeners(),
     PostFileService,
+    ServiceEquipos,
     provideHttpClient(withInterceptors([errorInterceptor])),
     provideToastService(),
   ],
