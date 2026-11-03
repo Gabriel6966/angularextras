@@ -1,3 +1,46 @@
-<app-menu-principal></app-menu-principal>
-<a routerLink="/informes">Ir a informes</a>
-<router-outlet></router-outlet>
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/menuprincipal">Angular Extras</a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#menuPrincipal"
+      aria-controls="menuPrincipal"
+      aria-expanded="false"
+      aria-label="Mostrar navegación"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menuPrincipal">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/menuprincipal"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            Insertar imagen
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/informes" routerLinkActive="active">
+            Generar PDF
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/error" routerLinkActive="active">
+            Error
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main class="container py-4">
+  <router-outlet></router-outlet>
+</main>

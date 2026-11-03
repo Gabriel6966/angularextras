@@ -5,9 +5,11 @@ import { InformesPdfComponent } from './components/informes-pdf-component/inform
 import { ErrorComponent } from './components/error-component/error-component';
 
 const routes: Routes = [
-  { path: "menuprincipal", component: MenuPrincipal },
-  {path: "informes", component: InformesPdfComponent},
-  {path: "error", component: ErrorComponent},
+  { path: '', redirectTo: 'menuprincipal', pathMatch: 'full' },
+  { path: 'menuprincipal', component: MenuPrincipal },
+  { path: 'informes', component: InformesPdfComponent },
+  { path: 'error', component: ErrorComponent },
+  { path: '**', redirectTo: 'menuprincipal' },
 ];
 
 @NgModule({
